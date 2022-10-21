@@ -9,7 +9,16 @@ export default function Menu(){
         >
             <RowCategory />
 
+        <Flex
+            flexWrap="wrap"
+            justify="space-around"
+            w="100%"
+        >
             <ColunmFoods />
+            <ColunmFoods />
+            <ColunmFoods />
+            <ColunmFoods />
+        </Flex>
         </Flex>
     )
 }

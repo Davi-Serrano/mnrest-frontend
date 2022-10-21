@@ -20,6 +20,8 @@ export function ColunmFoods(){
 
                 <Flex
                     flexDir="column"
+                    ml="1em"
+
                 >
                     <Text fontWeight="bold" fontSize="17px" >
                         Coxinha

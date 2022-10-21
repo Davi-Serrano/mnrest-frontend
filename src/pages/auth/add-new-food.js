@@ -3,7 +3,7 @@ import Head from 'next/head'
 import { useState } from 'react'
 
 
-export default function Home() {
+export default function AddNewFood() {
   const [ name, setName] = useState('')
   const [ price, setPrice ] = useState('')
   const [ category, setCategory ] = useState('')

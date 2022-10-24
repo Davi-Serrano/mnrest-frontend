@@ -1,4 +1,7 @@
 import { Flex, Text } from "@chakra-ui/react";
+
+import {api} from "../services/api"
+
 import { RowCategory } from "../components/RowCategory";
 import { ColunmFoods } from "../components/ColumnFoods";
 
@@ -22,3 +25,14 @@ export default function Menu(){
         </Flex>
     )
 }
+
+export const getServerSideProps = async ()=>{
+
+    const foods = await api.get("/food")
+
+    console.log('food :>> ', foods.data);
+    return{
+      props:{
+      }
+    }
+  }

@@ -1,20 +1,22 @@
-import { FormLabel, Input, Flex, Button } from '@chakra-ui/react'
+import { FormLabel, Input, Flex, Button, Select } from '@chakra-ui/react'
+import { api } from "../../services/api"
 import Head from 'next/head'
 import { useState } from 'react'
+import {BtnCreateNewFood} from "../../components/ButtonCreateNewFood"
 
 
-export default function AddNewFood() {
+export default function AddNewFood({categories}) {
   const [ name, setName] = useState('')
   const [ price, setPrice ] = useState('')
   const [ category, setCategory ] = useState('')
   const [ description, setDescription ] = useState('')
 
-  
+  console.log('category :>> ', category);
 
   return (
     <Flex>
       <Head>
-        <title>Regasitro Cardápio</title>
+        <title>Registro de nova comida </title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -53,8 +55,7 @@ export default function AddNewFood() {
               bg="#fff"
               border="1px solid black"
               value={description}
-                            onChange={(e)=>setDescription(e.target.value)}
-              
+              onChange={(e)=>setDescription(e.target.value)}
             />
 
             <FormLabel 
@@ -63,15 +64,23 @@ export default function AddNewFood() {
             Categoria:
             </FormLabel>
           
-            <Input
+            <Select 
+              placeholder='Selecione uma categoria' 
               bg="#fff"
-              border="1px solid black"
-              value={category}
-              
-              
               onChange={(e)=>setCategory(e.target.value)}
+            >
+              {categories.map( categorie=>
+                  <option 
+                    key={categorie.name} 
+                    value={categorie.id}
+                  >
+                            {categorie.name}
+                  </option> 
+              )
               
-            />
+            }
+            </Select>
+              
 
             <FormLabel fontWeight="bold">
                 Preço
@@ -84,39 +93,27 @@ export default function AddNewFood() {
               
             />
 
-            
-            <Button 
-              bg="#000" 
-              color="#fff"
-              width="80%"
-              mt="1em"
-              ml="1em"
-              _hover={{
-                opacity: .8,
-                cursor: "pointer"
-              }}
-            > 
-                Imagem
-            </Button>
-            
-            <Button 
-              
-              display="none"
-              bg="#000" 
-              color="#fff"
-              width="80%"
-              mt="1em"
-              ml="1em"
-              _hover={{
-                opacity: .8,
-                cursor: "pointer"
-              }}
-            > 
-                Enviar
-            </Button>
+          
+            <BtnCreateNewFood 
+              name={name}
+              price={price}
+              category={category}
+              description={description}
+            />
 
           </form>
       </Flex>
     </Flex>
   )
+}
+
+export const getServerSideProps = async ()=>{
+
+  const { data: categories} = await api.get("/category")
+
+  return{
+    props:{
+      categories
+    }
+  }
 }

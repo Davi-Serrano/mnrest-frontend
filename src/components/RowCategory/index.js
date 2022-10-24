@@ -1,7 +1,8 @@
 import { Flex, Text } from "@chakra-ui/react";
 
 
-export function RowCategory(){
+export function RowCategory({categories}){
+
     return (
         <Flex
             justify="space=around"
@@ -9,26 +10,16 @@ export function RowCategory(){
             color="black"
             width="100%"
         >
-            <Flex
-                px="1em"
-            >
-                Lanches
-            </Flex >
-            <Flex
-                px="1em"    
-            >
-                Pizzas
-            </Flex>
-            <Flex
-                px="1em"
-            >
-                Salgados
-            </Flex>
-            <Flex
-                px="1em"
-            >
-                Bebidas
-            </Flex>
+            {
+                categories.map( categorie => 
+                    <Flex
+                        key={categorie.id}
+                        px="1em"
+                    >
+                        {categorie.name}
+                    </Flex >
+                 )
+            }
 
         </Flex>
     );

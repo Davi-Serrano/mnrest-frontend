@@ -5,7 +5,7 @@ import {api} from "../services/api"
 import { RowCategory } from "../components/RowCategory";
 import { ColunmFoods } from "../components/ColumnFoods";
 
-export default function Menu({categories}){
+export default function Menu({categories, foods}){
     return(
         <Flex
             flexDir="column"
@@ -17,10 +17,8 @@ export default function Menu({categories}){
             justify="space-around"
             w="100%"
         >
-            <ColunmFoods />
-            <ColunmFoods />
-            <ColunmFoods />
-            <ColunmFoods />
+            <ColunmFoods  foods={foods} categories={categories} />
+          
         </Flex>
         </Flex>
     )
@@ -28,13 +26,14 @@ export default function Menu({categories}){
 
 export const getServerSideProps = async ()=>{
 
-    const foods = await api.get("/food")
+    const { data: foods} = await api.get("/food")
     const { data: categories} = await api.get("/category")
 
-
+console.log('foods :>> ', foods);
     return{
       props:{
-        categories
+        categories,
+        foods
       }
     }
   }

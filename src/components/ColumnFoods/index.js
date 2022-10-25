@@ -1,46 +1,50 @@
 import { Flex, Text, Image } from "@chakra-ui/react";
 import { usefoods } from "../../context/useFoods";
 
-export function ColunmFoods(){
-
+export function ColunmFoods({foods, categories}){
+console.log('categories :>> ', );
     return(
         <Flex
             flexDir="column"
-            mt="1em"
             justify="center"
+            mt="1em"
         >
-            <Flex
-                flexWrap="wrap"
-                justify="space-between"
-                px="1em"
-                bg="#fff"
-                color="black"
-            >
-                <Flex align="center" >
-                    <Image src="./coxinha.jpg" w="100px" h="100px" alt="Imagem Coxinha" />        
-                </Flex>
-
+            {
+            foods.map(food =>
                 <Flex
-                    flexDir="column"
-                    ml="1em"
-
+                    key={food.id}
+                    justify="start"
+                    mt="1em"
+                    px="1em"
+                    bg="#fff"
+                    color="black"
                 >
-                    <Text fontWeight="bold" fontSize="17px" >
-                        Coxinha
-                    </Text>
-                    <Text 
-                        maxW="90%" 
-                        mt=".5em"
-                        color="gray"
-                    >
-                        Coxinha de Frango com catupiry
-                    </Text>
-                    <Text color="green" fontWeight="bold" mt="10%">
-                        R$6,00
-                    </Text>
-                </Flex>
+                    <Flex align="center" >
+                        <Image src="./coxinha.jpg" w="100px" h="100px" alt="Imagem Coxinha" />        
+                    </Flex>
 
-            </Flex>
+                    <Flex
+                        flexDir="column"
+                        ml="1em"
+                    >
+                        <Text fontWeight="bold" fontSize="17px" >
+                            {food.name}
+                        </Text>
+                        <Text 
+                            maxW="90%" 
+                            mt=".5em"
+                            color="gray"
+                        >
+                            {food.description}
+                        </Text>
+                        <Text color="green" fontWeight="bold" mt="10%">
+                            R${food.price}
+                        </Text>
+                    </Flex>
+
+                </Flex>
+                )
+            }
         </Flex>
     )
 }

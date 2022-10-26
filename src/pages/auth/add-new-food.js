@@ -11,8 +11,6 @@ export default function AddNewFood({categories}) {
   const [ category, setCategory ] = useState('')
   const [ description, setDescription ] = useState('')
 
-  console.log('category :>> ', category);
-
   return (
     <Flex>
       <Head>

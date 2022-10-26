@@ -1,13 +1,21 @@
 import { useState, createContext, useContext} from "react"
 import axios from "axios"
 
-export const CategoriesContext = createContext();
+export const CategoriesContext = createContext({});
 
 
 export default function CategoriesProvider({ children }){
 
 
-    const [ categories, setCategories ] = useState("");
+    const [ categories, setCategories ] = useState(
+        [
+            {
+                id: "empty",
+                name: "empty"
+
+            }
+        ]
+    )
 
     return(
 

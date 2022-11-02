@@ -17,10 +17,11 @@ export function ColunmFoods({foods, categories}){
                     px="1em"
                     bg="#fff"
                     color="black"
+                    h="130px"
                 >
-                    <Flex align="center" >
-                        <Image src="./coxinha.jpg" w="100px" h="100px" alt="Imagem Coxinha" />        
-                    </Flex>
+                    
+                        <Image src="./coxinha.jpg" my=".8em" w="100px" h="100px" alt="Imagem Coxinha" />        
+                    
 
                     <Flex
                         flexDir="column"

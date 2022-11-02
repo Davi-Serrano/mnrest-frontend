@@ -14,7 +14,6 @@ export default function Menu({categories, foods}){
 
     
     useEffect(()=> setCategories(categories), [])
-    console.log('data :>> ', data);
     
     return(
         <Flex

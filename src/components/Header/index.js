@@ -1,4 +1,5 @@
 import { Flex,Text} from "@chakra-ui/react";
+import Router from "next/router";
 
 export function Header() {
     return (

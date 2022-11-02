@@ -10,7 +10,7 @@ import { useEffect } from "react";
 
 export default function Menu({categories, foods}){
 
-    const { categories: data, setCategories} = useCategories()
+    const { categories: dataCategory, setCategories} = useCategories()
 
     
     useEffect(()=> setCategories(categories), [])
@@ -19,14 +19,14 @@ export default function Menu({categories, foods}){
         <Flex
             flexDir="column"
         >
-            <RowCategory categories={data}/>
+            <RowCategory categories={dataCategory}/>
 
         <Flex
             flexWrap="wrap"
             justify="space-around"
             w="100%"
         >
-            <ColunmFoods  foods={foods} categories={data} />
+            <ColunmFoods  foods={foods} categories={dataCategory} />
           
         </Flex>
         </Flex>

@@ -1,5 +1,4 @@
 import { Flex, Text, Image } from "@chakra-ui/react";
-import { usefoods } from "../../context/useFoods";
 
 export function ColunmFoods({foods, categories}){
     return(

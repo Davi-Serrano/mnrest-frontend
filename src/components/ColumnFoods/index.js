@@ -1,6 +1,6 @@
 import { Flex, Text, Image } from "@chakra-ui/react";
 
-export function ColunmFoods({foods, categories}){
+export function ColunmFoods({foods}){
     return(
         <Flex
             flexDir="column"

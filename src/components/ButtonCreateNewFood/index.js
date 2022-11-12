@@ -3,8 +3,8 @@ import { api } from "../../services/api";
 
 export function BtnCreateNewFood({name, price, category, description}){
 
-    async function handleSubmitFoods(){
-       const resp = await api.post("/food", {
+    const handleSubmitFoods = async()=>{
+       await api.post("/food", {
             name,
             description,
             category_id: category,

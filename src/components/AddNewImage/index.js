@@ -1,10 +1,8 @@
 import { useState } from 'react';
 import { FormLabel, Input, Flex, Button, Select } from '@chakra-ui/react'
-import axios from 'axios';
-
 
 export function AddNewImage({id}){
-    const {image, setImage} = useState("");
+    const [image, setImage] = useState("");
 
     console.log('image :>> ', image);
 
@@ -19,7 +17,7 @@ export function AddNewImage({id}){
     return (
         <Flex  
             position="absolute"
-            // display="none"
+            display="none"
             align="center" 
             justify="center" 
             w="98vw"
@@ -39,7 +37,7 @@ export function AddNewImage({id}){
                 bg="#fff"
                 border="1px solid black"
                 padding=".2em"  
-                onChange={()=> setImage(e.target.value)}
+                onChange={(e)=> setImage(e.target.files[0])}
                 />
 
                 <Button 

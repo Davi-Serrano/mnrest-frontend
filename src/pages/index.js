@@ -1,14 +1,38 @@
+import { useState, useContext } from 'react'
+
 import { FormLabel, Input, Flex, Button } from '@chakra-ui/react'
 import Head from 'next/head'
-import { useState } from 'react'
+
+import { AuthContext } from '../context/authContext'
+
+import { api } from "../services/api"
 
 
 export default function Home() {
-  const [email, setEmail] = useState('')
+  const [name, setName] = useState('')
   const [ password, setPassword ] = useState('')
-  
+  const { token, setToken } = useContext(AuthContext);
+
+
+  const user = { 
+    name: "davi", 
+    password: "davi"
+  }
+
+  async function handleSubmitUser(){
+
+       await api.post("/session", {user}).then( (res)=> setToken(res.data))
+      .catch(err =>
+          console.log('resp :>> ', err.response)
+      )
+        
+        
+        
+      console.log('state :>> ', token);
+}
 
   return (
+
     <Flex>
       <Head>
         <title>Cardápio</title>
@@ -34,10 +58,10 @@ export default function Home() {
             <Input
               bg="#fff"
               border="1px solid black"
-              value={email}
-              type="email"
+              value={name}
+              type="text"
               placeholder="nome@email.com"
-              onChange={(e)=>setEmail(e.target.value)}
+              onChange={(e)=>setName(e.target.value)}
               _placeholder={{
                 opacity: .4
               }}
@@ -57,7 +81,6 @@ export default function Home() {
             />
             
             <Button 
-              type="submit"
               bg="#000" 
               color="#fff"
               width="80%"
@@ -67,6 +90,7 @@ export default function Home() {
                 opacity: .8,
                 cursor: "pointer"
               }}
+              onClick={()=>handleSubmitUser()}
             > 
                 Entrar
             </Button>

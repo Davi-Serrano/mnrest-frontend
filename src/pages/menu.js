@@ -10,6 +10,7 @@ import { useEffect } from "react";
 
 export default function Menu({categories, foods}){
 
+
     const { categories: dataCategory, setCategories} = useCategories()
 
     

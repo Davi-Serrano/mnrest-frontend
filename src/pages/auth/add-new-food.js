@@ -3,7 +3,7 @@ import { api } from "../../services/api"
 import Head from 'next/head'
 import { useState } from 'react'
 import {BtnCreateNewFood} from "../../components/ButtonCreateNewFood"
-import { AddNewImage } from "../../components/AddNewImage"
+
 
 
 
@@ -103,7 +103,6 @@ export default function AddNewFood({categories}) {
 
           </form>
 
-          <AddNewImage />
       </Flex>
     </Flex>
   )

@@ -1,13 +1,14 @@
 import { useState } from 'react';
 import { FormLabel, Input, Flex, Button, Select } from '@chakra-ui/react'
+import { api } from "../../services/api"
 
-export function AddNewImage({id}){
+export function AddNewImage({id, display, setDisplay={setDisplay}}){
     const [image, setImage] = useState("");
 
-    console.log('image :>> ', image);
+    console.log('image :>> ', id);
 
     async function handleAddNewImage(id, image){
-        await api.patch("/food/image", id, image).then( ()=> {})
+        await api.patch("/food/image", {id, foods: image}).then( ()=> {})
         .catch(err =>
             console.log('resp :>> ', err.response)
         )
@@ -17,19 +18,18 @@ export function AddNewImage({id}){
     return (
         <Flex  
             position="absolute"
-            display="none"
-            align="center" 
-            justify="center" 
-            w="98vw"
-            h="90vh"
+            display={display}
+            h="100%"
             color="black"
             bg="#7b7b7b"
+            p="1em"
         >
             <form >
             <FormLabel 
                 fontWeight="bold"
                 >
                 Selceione uma imagem:
+                {id}
             </FormLabel>
             
                 <Input
@@ -41,7 +41,7 @@ export function AddNewImage({id}){
                 />
 
                 <Button 
-                    bg="#000" 
+                    bg="green" 
                     color="#fff"
                     width="80%"
                     mt="1em"
@@ -50,8 +50,24 @@ export function AddNewImage({id}){
                         opacity: .8,
                         cursor: "pointer"
                     }}
+                    onClick={()=>handleAddNewImage(id, image)}
                     > 
                     Enviar
+                </Button>
+
+                <Button 
+                    bg="red" 
+                    color="#fff"
+                    width="80%"
+                    mt="1em"
+                    ml="1em"
+                    _hover={{
+                        opacity: .8,
+                        cursor: "pointer"
+                    }}
+                    onClick={()=> setDisplay("none")}
+                    > 
+                    Fechar
                 </Button>
             
 

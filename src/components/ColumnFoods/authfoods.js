@@ -1,6 +1,10 @@
 import { Flex, Text, Image, Button } from "@chakra-ui/react";
+import { useState } from "react";
+import { AddNewImage } from "../AddNewImage";
 
 export function ColunmFoodsAuth({foods}){
+const[ display, setDisplay ] = useState("none")
+
     return(
         <Flex
             flexDir="column"
@@ -55,6 +59,7 @@ export function ColunmFoodsAuth({foods}){
                         opacity: .8,
                         cursor: "pointer"
                         }}
+                        onClick={()=> display == "none" ? setDisplay("block") : setDisplay("none") }
                     > 
                         Alterar IMagem
                     </Button>
@@ -86,6 +91,8 @@ export function ColunmFoodsAuth({foods}){
                     </Button>
 
                     </Flex>
+
+                    <AddNewImage id={food.id} display={display} setDisplay={setDisplay} />
                 </Flex>
                 )
             }

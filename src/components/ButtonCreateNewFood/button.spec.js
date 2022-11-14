@@ -9,16 +9,5 @@ describe("Button", ()=>{
       expect(screen.getByText("Enviar")).toBeInTheDocument();
     });
 
-    it("Should be able call handleSubmitFoods when the button is clicked", async ()=> {
-      render(<BtnCreateNewFood/>);
-
-      const button = screen.getByRole("button");
-
-      console.log('button :>> ', button);
-      fireEvent.click(button)
-
-      
-
-      expect().toReturn()
-    });
+  
 });

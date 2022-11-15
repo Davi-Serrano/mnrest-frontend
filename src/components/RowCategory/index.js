@@ -1,8 +1,10 @@
 import { Flex, Text } from "@chakra-ui/react";
+import { useCategories } from "../../context/useCategory";
+
 
 
 export function RowCategory({categories}){
-
+    const { setCategories } = useCategories()
 
     return (
         <Flex
@@ -18,11 +20,11 @@ export function RowCategory({categories}){
                     <Flex
                         key={categorie.id}
                         px="1em"
-                        onClick={()=> alert(categorie.id)}
+                        onClick={()=> setCategories(categorie.id)}
                     >
                         {categorie.name} 
                     </Flex >
-                 )
+                )
             }
 
         </Flex>

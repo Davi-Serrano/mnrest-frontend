@@ -1,33 +1,31 @@
+import { useEffect } from "react";
 import {useCategories } from "../context/useCategory"
-
-import { Flex, Text } from "@chakra-ui/react";
 
 import {api} from "../services/api"
 
+import { Flex, Text } from "@chakra-ui/react";
+
 import { RowCategory } from "../components/RowCategory";
 import { ColunmFoods } from "../components/ColumnFoods";
-import { useEffect } from "react";
+
 
 export default function Menu({categories, foods}){
+    const { setCategories } = useCategories()
 
-
-    const { categories: dataCategory, setCategories} = useCategories()
-
-    
-    useEffect(()=> setCategories(categories), [])
+    useEffect(()=> setCategories(categories[0].id), [])
     
     return(
         <Flex
             flexDir="column"
         >
-            <RowCategory categories={dataCategory}/>
+            <RowCategory categories={categories}/>
 
         <Flex
             flexWrap="wrap"
             justify="space-around"
             w="100%"
         >
-            <ColunmFoods  foods={foods} categories={dataCategory} />
+            <ColunmFoods  foods={foods}/>
           
         </Flex>
         </Flex>

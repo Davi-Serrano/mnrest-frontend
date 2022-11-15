@@ -3,13 +3,7 @@ import { useState, createContext, useContext} from "react"
 export const CategoriesContext = createContext({});
 
 export default function CategoriesProvider({ children }){
-    const [ categories, setCategories ] = useState([
-            {
-                id: "empty",
-                name: "empty"
-
-            }
-        ]);
+    const [ categories, setCategories ] = useState("não é undefined");
 
     return(
 

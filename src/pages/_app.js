@@ -3,6 +3,8 @@ import { Header } from '../components/Header'
 import CategoriesProvider from '../context/useCategory'
 import { theme } from '../styles/theme'
 import AuthProvider from '../context/authContext'
+import FoodsContext from '../context/foodsContext'
+
 
 function MyApp({ Component, pageProps }) {
 
@@ -11,8 +13,10 @@ function MyApp({ Component, pageProps }) {
     <ChakraProvider theme={theme}>
       <AuthProvider>
       <CategoriesProvider>
-          <Header />
-          <Component {...pageProps} />
+        <FoodsContext>
+            <Header />
+            <Component {...pageProps} />
+        </FoodsContext>
       </CategoriesProvider>
       </AuthProvider>
     </ChakraProvider>

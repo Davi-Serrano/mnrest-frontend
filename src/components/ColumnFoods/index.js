@@ -1,6 +1,18 @@
 import { Flex, Text, Image } from "@chakra-ui/react";
+import { useEffect } from "react";
+import { useCategories } from "../../context/useCategory";
+
+
 
 export function ColunmFoods({foods}){
+    const { categories } = useCategories()
+    console.log('categories :>> ', categories);
+
+
+    const filtredFoods = foods.filter(food =>
+        food.category_id == categories
+        ); 
+
     return(
         <Flex
             flexDir="column"
@@ -8,7 +20,7 @@ export function ColunmFoods({foods}){
             mt="1em"
         >
             {
-            foods.map(food =>
+            filtredFoods.map(food =>
                 <Flex
                     key={food.id}
                     justify="start"

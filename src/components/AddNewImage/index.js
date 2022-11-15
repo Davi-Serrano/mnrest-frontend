@@ -5,10 +5,14 @@ import { api } from "../../services/api"
 export function AddNewImage({id, display, setDisplay={setDisplay}}){
     const [image, setImage] = useState("");
 
-    console.log('image :>> ', id);
 
     async function handleAddNewImage(id, image){
-        await api.patch("/food/image", {id, foods: image}).then( ()=> {})
+        const data = new FormData();
+        data.append("id", id);
+        data.append("foods", image)
+    
+
+        await api.patch("/food/image", data).then( ()=> {})
         .catch(err =>
             console.log('resp :>> ', err.response)
         )
@@ -27,9 +31,9 @@ export function AddNewImage({id, display, setDisplay={setDisplay}}){
             <form >
             <FormLabel 
                 fontWeight="bold"
+                htmlFor="file"
                 >
                 Selceione uma imagem:
-                {id}
             </FormLabel>
             
                 <Input
@@ -37,6 +41,7 @@ export function AddNewImage({id, display, setDisplay={setDisplay}}){
                 bg="#fff"
                 border="1px solid black"
                 padding=".2em"  
+                accept=".jpg"
                 onChange={(e)=> setImage(e.target.files[0])}
                 />
 

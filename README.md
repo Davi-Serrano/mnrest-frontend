@@ -1,34 +1,56 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<h1>Cardapio de Restaurante</h1>
 
-## Getting Started
+<h4>Descrição</h4>
+<p>Esse site simula um cardápio online de um restaurante aonde o dono após fazer seu login com sua senha terá permissão para criar novas categorias de comidas, criar novos itens e dar detalhes sobre o produto, mudar o preço e a foto de cadda item</p>
 
-First, run the development server:
+<p>A aplicação possui somente uma pagina publica que é o cardapio aonde o cliente pode pesquisar pelos produtos filtrando por categorias e ordem de preço/p>
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+<p>A aplicação possui mais quatro paginas aonde uma é para o login, um dashboard, uma para criar nova categoria, criar nova comida. e uma para alterar propiedades de um produto ja existente/p>
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+![Cbank gif](https://user-images.githubusercontent.com/82523921/166157471-4d0557b2-1af5-45c1-9a20-a9a6f70d6656.gif)
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+<h4><a href="https://ds-exemplo-landing-page-1.netlify.app/" target="_blank">Para acessar ao site clique aqui</a></h4>
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+<h2>Frond-End</h2>
 
-## Learn More
+<h3>
+<img alt="Icone de verficação" width="25px" src="https://w7.pngwing.com/pngs/628/269/png-transparent-check-mark-computer-icons-checkbox-others-angle-rectangle-logo.png"/>
+  NextJS
+</h3>
 
-To learn more about Next.js, take a look at the following resources:
+<h3>
+<img alt="Icone de verficação" width="25px" src="https://w7.pngwing.com/pngs/628/269/png-transparent-check-mark-computer-icons-checkbox-others-angle-rectangle-logo.png"/>
+  ChakraUI
+</h3>
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+<h3>
+<img alt="Icone de verficação" width="25px" src="https://w7.pngwing.com/pngs/628/269/png-transparent-check-mark-computer-icons-checkbox-others-angle-rectangle-logo.png"/>
+  Axios
+</h3>
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+<h2>Back-End</h2>
 
-## Deploy on Vercel
+<h3>
+<img alt="Icone de verficação" width="25px" src="https://w7.pngwing.com/pngs/628/269/png-transparent-check-mark-computer-icons-checkbox-others-angle-rectangle-logo.png"/>
+  NodeJS com Express
+</h3>
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+<h3>
+<img alt="Icone de verficação" width="25px" src="https://w7.pngwing.com/pngs/628/269/png-transparent-check-mark-computer-icons-checkbox-others-angle-rectangle-logo.png"/>
+  TypeScript
+</h3>
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+<h3>
+<img alt="Icone de verficação" width="25px" src="https://w7.pngwing.com/pngs/628/269/png-transparent-check-mark-computer-icons-checkbox-others-angle-rectangle-logo.png"/>
+  PostrgreSQL
+</h3>
+
+<h3>
+<img alt="Icone de verficação" width="25px" src="https://w7.pngwing.com/pngs/628/269/png-transparent-check-mark-computer-icons-checkbox-others-angle-rectangle-logo.png"/>
+  Docker
+</h3>
+
+
+<h4><a href="https://github.com/Davi-Serrano/mnrest-api" target="_blank">Para acessar o Back-End</a></h4>
+

@@ -1,11 +1,11 @@
 <h1>Cardapio de Restaurante</h1>
 
 <h4>Descrição</h4>
-<p>Esse site simula um cardápio online de um restaurante aonde o dono após fazer seu login com sua senha terá permissão para criar novas categorias de comidas, criar novos itens e dar detalhes sobre o produto, mudar o preço e a foto de cadda item</p>
+<p>Esse site simula um cardápio online de um restaurante aonde o dono após fazer seu login com sua senha terá permissão para criar novas categorias de comidas, criar novos itens e dar detalhes sobre o produto, mudar o preço e a foto de cada item.</p>
 
-<p>A aplicação possui somente uma pagina publica que é o cardapio aonde o cliente pode pesquisar pelos produtos filtrando por categorias e ordem de preço/p>
+<p>A aplicação possui somente uma pagina pública que é o cardápio aonde o cliente pode pesquisar pelos produtos filtrando por categorias e ordem de preço.</p>
 
-<p>A aplicação possui mais quatro paginas aonde uma é para o login, um dashboard, uma para criar nova categoria, criar nova comida. e uma para alterar propiedades de um produto ja existente/p>
+<p>A aplicação possui mais quatro páginas aonde uma é para o login, uma pagina para o dashboard, uma para criar nova categoria, outra para criar um novo produto e uma para alterar propiedades de um produto ja existente.</p>
 
 ![Cbank gif](https://user-images.githubusercontent.com/82523921/166157471-4d0557b2-1af5-45c1-9a20-a9a6f70d6656.gif)
 

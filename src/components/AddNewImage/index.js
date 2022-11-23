@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { FormLabel, Input, Flex, Button, Select } from '@chakra-ui/react'
-import { api } from "../../services/api"
+import { api } from "../../services/apiClient"
 
 export function AddNewImage({id, display, setDisplay={setDisplay}}){
     const [image, setImage] = useState("");

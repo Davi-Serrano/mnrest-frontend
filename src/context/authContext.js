@@ -1,11 +1,10 @@
 import { createContext, ReactNode, useEffect, useState } from "react";
 import { setCookie, parseCookies, destroyCookie } from "nookies"
 import Router from "next/router";
-import { api } from "../services/api";
+import { api } from "../services/apiClient";
 
 
 export const AuthContext = createContext({});
-
 
 export function singOut(){
     destroyCookie(undefined, "nextauth.token")
@@ -23,7 +22,7 @@ export default function AuthProvider({children}){
     var isAuthenticated = !!user;
 
     useEffect(()=>{
-        const authChannel = new BroadcastChannel("auth")
+         let authChannel = new BroadcastChannel("auth")
 
         authChannel.onmessage = (message)=> {
             switch(message.data){
@@ -55,12 +54,13 @@ export default function AuthProvider({children}){
    }, [])
 
 
-    async function singIn({name, password}){
+    async function singIn(user){
         try {
              const response = await api.post('/session', {
-                 name,
-                 password
+                 user
              })
+
+             console.log('response :>> ', response.data);
              
              const { token, refreshToken } = response.data
  

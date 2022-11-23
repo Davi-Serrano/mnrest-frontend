@@ -1,5 +1,5 @@
 import { FormLabel, Input, Flex, Button, Select } from '@chakra-ui/react'
-import { api } from "../../services/api"
+import { api } from "../../services/apiClient"
 import Head from 'next/head'
 import { useState } from 'react'
 import {BtnCreateNewFood} from "../../components/ButtonCreateNewFood"

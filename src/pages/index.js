@@ -5,13 +5,12 @@ import Head from 'next/head'
 
 import { AuthContext } from '../context/authContext'
 
-import { api } from "../services/api"
 
 
 export default function Home() {
   const [name, setName] = useState('')
   const [ password, setPassword ] = useState('')
-  const { token, setToken } = useContext(AuthContext);
+  const { singIn} = useContext(AuthContext);
 
 
   const user = { 
@@ -19,17 +18,15 @@ export default function Home() {
     password: "davi"
   }
 
-  async function handleSubmitUser(){
-
-       await api.post("/session", {user}).then( (res)=> setToken(res.data))
-      .catch(err =>
-          console.log('resp :>> ', err.response)
-      )
-        
-        
-        
-      console.log('state :>> ', token);
-}
+  async function handleSubmit(event){
+    event.preventDefault();
+    
+      const user = {
+        name,
+        password
+      }
+      await singIn(user)
+  }
 
   return (
 
@@ -48,7 +45,7 @@ export default function Home() {
         bg="#7b7b7b"
       >
 
-        <form >
+        <form  onSubmit={handleSubmit} >
           <FormLabel 
               fontWeight="bold"
           >
@@ -80,7 +77,8 @@ export default function Home() {
               }}
             />
             
-            <Button 
+            <Button
+              type='submit' 
               bg="#000" 
               color="#fff"
               width="80%"
@@ -89,8 +87,7 @@ export default function Home() {
               _hover={{
                 opacity: .8,
                 cursor: "pointer"
-              }}
-              onClick={()=>handleSubmitUser()}
+              }}              
             > 
                 Entrar
             </Button>

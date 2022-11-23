@@ -2,7 +2,7 @@ import {useCategories } from "../../context/useCategory"
 
 import { Flex, Text } from "@chakra-ui/react";
 
-import {api} from "../../services/api"
+import {api} from "../../services/apiClient"
 
 import { RowCategory } from "../../components/RowCategory";
 import { ColunmFoodsAuth } from "../../components/ColumnFoods/authfoods";

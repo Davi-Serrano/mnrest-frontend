@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import {useCategories } from "../context/useCategory"
 
-import {api} from "../services/api"
+import {api} from "../services/apiClient"
 
 import { Flex, Text } from "@chakra-ui/react";
 

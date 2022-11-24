@@ -9,7 +9,7 @@ const[ display, setDisplay ] = useState("none")
         <Flex
             flexDir="column"
             justify="center"
-            mt="1em"
+            mt="9em"
         >
             {
             foods.map(food =>

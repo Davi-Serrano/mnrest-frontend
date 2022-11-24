@@ -39,6 +39,18 @@ export default function Dashboard() {
                 >
                     <NextLink href="/auth/add-new-category" passHref> Criar nova categoria </NextLink>  
                 </Flex>
+
+                <Flex
+                    justify="center"
+                    align="center"
+                    bg="#000" 
+                    color="#fff"
+                    width="200px"
+                    h="80px"
+                    ml="1em"
+                >
+                    <NextLink href="/auth/edit-menu" passHref> Editar Menu </NextLink>  
+                </Flex>
             </Flex>
       </Flex>
     )

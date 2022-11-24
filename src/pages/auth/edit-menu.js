@@ -8,25 +8,29 @@ import { RowCategory } from "../../components/RowCategory";
 import { ColunmFoodsAuth } from "../../components/ColumnFoods/authfoods";
 import { useEffect } from "react";
 
+import {BtnBackToDashboard} from "../../components/ButtonBackToDashboard"
+
+
 export default function Menu({categories, foods}){
 
-    const { categories: dataCategory, setCategories} = useCategories()
+    const { setCategories } = useCategories()
 
     
-    useEffect(()=> setCategories(categories), [])
+    useEffect(()=> setCategories(categories[0].id), [])
     
     return(
         <Flex
             flexDir="column"
         >
-            <RowCategory categories={dataCategory}/>
+            <BtnBackToDashboard />
+            <RowCategory categories={categories}/>
 
         <Flex
             flexWrap="wrap"
             justify="space-around"
             w="100%"
         >
-            <ColunmFoodsAuth  foods={foods} categories={dataCategory} />
+            <ColunmFoodsAuth  foods={foods} categories={categories} />
           
         </Flex>
         </Flex>

@@ -1,6 +1,6 @@
 import axios from "axios"
 import { parseCookies, setCookie } from "nookies";
-import { singOut } from "../context/AuthContext";
+import { singOut } from "../context/authContext";
 import { AuthTokenError } from "./errors/AuthTokenErros";
 
 let isRefresh = false;

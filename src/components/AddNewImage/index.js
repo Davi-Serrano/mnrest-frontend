@@ -33,7 +33,7 @@ export function AddNewImage({id, display, setDisplay={setDisplay}}){
                 fontWeight="bold"
                 htmlFor="file"
                 >
-                Selceione uma imagem:
+                Selecione uma imagem:
             </FormLabel>
             
                 <Input

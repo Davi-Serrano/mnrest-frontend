@@ -24,7 +24,7 @@ const[ display, setDisplay ] = useState("none")
                     py=".5em"
                 >
                     
-                        <Image src="./coxinha.jpg" my=".8em" w="100px" h="100px" alt="Imagem Coxinha" />        
+                        <Image src="../coxinha.jpg" my=".8em" w="100px" h="100px" alt="Imagem Coxinha" />        
                     
 
                     <Flex

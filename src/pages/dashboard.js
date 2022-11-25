@@ -1,11 +1,18 @@
+import {useContext} from "react"
 import { Flex } from "@chakra-ui/react"
 import Head from 'next/head'
 import NextLink  from "next/link"
+import { AuthContext } from '../context/authContext'
+
 
 export default function Dashboard() {
   
+    const { isAuthenticated, user } = useContext(AuthContext);
+
+    console.log('isAuthenticated :>> ', isAuthenticated);
+    console.log('user :>> ', user);
+
     
-  
     return (
         <Flex width="400px" margin="auto" mt="1em"> 
             <Head>

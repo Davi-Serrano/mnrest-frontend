@@ -10,8 +10,6 @@ export function singOut(){
     destroyCookie(undefined, "nextauth.token")
     destroyCookie(undefined, "nextauth.refreshToken")
 
-    authChannel.postMessage("singOut")
-
     Router.push('/')
 }
 
@@ -19,10 +17,10 @@ export function singOut(){
 export default function AuthProvider({children}){
 
     const [ user, setUser ] = useState();
-    var isAuthenticated = !!user;
-
+    const [ isAuthenticated, setIsAuthenticated ]= useState(false)
+    
     useEffect(()=>{
-         let authChannel = new BroadcastChannel("auth")
+        let authChannel = new BroadcastChannel("auth")
 
         authChannel.onmessage = (message)=> {
             switch(message.data){
@@ -36,56 +34,54 @@ export default function AuthProvider({children}){
     }, [])
 
 
-    useEffect(()=> {
-        const {"nextauth.token": token } = parseCookies()
+//     useEffect(()=> {
+//         const {"nextauth.token": token } = parseCookies()        
 
+//         if(token){
+//             api.get('/me').then(response =>{
+//                const { user } = response.data
+//                setUser(user.name)
+//            })
+//            .catch( () =>{
+//                singOut();
+//            })
+//         }
 
-        if(token){
-            api.get('/me').then(response =>{
-               const { user } = response.data
-
-               setUser(user.name)
-           })
-           .catch( () =>{
-               singOut();
-           })
-        }
-
-   }, [])
+//    }, [])
 
 
     async function singIn(user){
         try {
-             const response = await api.post('/session', {
-                 user
-             })
+            const response = await api.post('/session', {
+                user
+            })
 
-             console.log('response :>> ', response.data);
-             
-             const { token, refreshToken } = response.data
- 
-             setCookie(undefined, 'nextauth.token', token,{
-                 maxAge: 60 * 60 *24 * 30, // 30 days
-                 path: '/'
-             });
+            setIsAuthenticated(true)
+            console.log('response :>> ', response.data, isAuthenticated);
+            
+            const { token, refresh_token } = response.data
 
-             setCookie(undefined, 'nextauth.refreshToken', refreshToken, {
-                 maxAge: 60 * 60 *24 * 30, // 30 days
-                 path: '/'
-             });
- 
- 
-             setUser({
-                 user,
-             })
- 
-             api.defaults.headers['Authorization'] = `Bearer ${token}` 
- 
-             Router.push("/dashboard")
-             
-        } catch (err) {
-             console.log(err)
-        }
+            setCookie(undefined, 'nextauth.token', token,{
+                maxAge: 60 * 60 *24 * 30, // 30 days
+                path: '/'
+            });
+
+            setCookie(undefined, 'nextauth.refreshToken', refresh_token, {
+                maxAge: 60 * 60 *24 * 30, // 30 days
+                path: '/'
+            });
+
+            setUser({
+                user,
+            })
+
+            api.defaults.headers['Authorization'] = `Bearer ${token}` 
+
+            Router.push("/dashboard")
+            
+       } catch (err) {
+            console.log(err)
+       }
      }
     
 

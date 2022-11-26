@@ -9,7 +9,7 @@ export function ColunmFoods({foods}){
 
     const filtredFoods = foods.filter(food =>
         food.category_id == categories
-        ); 
+    ); 
 
     return(
         <Flex

@@ -8,7 +8,6 @@ import { RowCategory } from "../../components/RowCategory";
 import { ColunmFoodsAuth } from "../../components/ColumnFoods/authfoods";
 import { useEffect } from "react";
 
-import {BtnBackToDashboard} from "../../components/ButtonBackToDashboard"
 
 
 export default function Menu({categories, foods}){
@@ -22,7 +21,6 @@ export default function Menu({categories, foods}){
         <Flex
             flexDir="column"
         >
-            <BtnBackToDashboard />
             <RowCategory categories={categories}/>
 
         <Flex

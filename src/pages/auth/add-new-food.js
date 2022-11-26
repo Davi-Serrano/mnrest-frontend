@@ -2,7 +2,6 @@ import { FormLabel, Input, Flex, Button, Select } from '@chakra-ui/react'
 import { api } from "../../services/apiClient"
 import Head from 'next/head'
 import { useState } from 'react'
-import {BtnBackToDashboard} from "../../components/ButtonBackToDashboard"
 import {BtnCreateNewFood} from "../../components/ButtonCreateNewFood"
 
 
@@ -22,7 +21,6 @@ export default function AddNewFood({categories}) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <BtnBackToDashboard />
 
       <Flex  
         align="center" 

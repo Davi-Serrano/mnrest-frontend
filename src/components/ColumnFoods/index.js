@@ -1,13 +1,11 @@
-import { Flex, Text, Image } from "@chakra-ui/react";
-import { useEffect } from "react";
 import { useCategories } from "../../context/useCategory";
+
+import { Flex, Text, Image } from "@chakra-ui/react";
 
 
 
 export function ColunmFoods({foods}){
     const { categories } = useCategories()
-    console.log('categories :>> ', categories);
-
 
     const filtredFoods = foods.filter(food =>
         food.category_id == categories

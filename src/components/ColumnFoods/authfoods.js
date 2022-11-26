@@ -1,9 +1,19 @@
-import { Flex, Text, Image, Button } from "@chakra-ui/react";
 import { useState } from "react";
+import { useCategories } from "../../context/useCategory";
+
+import { Flex, Text, Image, Button } from "@chakra-ui/react";
 import { AddNewImage } from "../AddNewImage";
+
 
 export function ColunmFoodsAuth({foods}){
 const[ display, setDisplay ] = useState("none")
+
+const { categories } = useCategories()
+
+    const filtredFoods = foods.filter(food =>
+        food.category_id == categories
+        ); 
+
 
     return(
         <Flex
@@ -12,7 +22,7 @@ const[ display, setDisplay ] = useState("none")
             mt="9em"
         >
             {
-            foods.map(food =>
+            filtredFoods.map(food =>
                 <Flex
                     key={food.id}
                     justify="start"

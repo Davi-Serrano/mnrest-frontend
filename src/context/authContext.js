@@ -17,7 +17,7 @@ export function singOut(){
 export default function AuthProvider({children}){
 
     const [ user, setUser ] = useState();
-    const [ isAuthenticated, setIsAuthenticated ]= useState(false)
+    const isAuthenticated = !!user
     
     useEffect(()=>{
         let authChannel = new BroadcastChannel("auth")
@@ -34,20 +34,21 @@ export default function AuthProvider({children}){
     }, [])
 
 
-//     useEffect(()=> {
-//         const {"nextauth.token": token } = parseCookies()        
+    useEffect(()=> {
+        const {"nextauth.token": token } = parseCookies()        
 
-//         if(token){
-//             api.get('/me').then(response =>{
-//                const { user } = response.data
-//                setUser(user.name)
-//            })
-//            .catch( () =>{
-//                singOut();
-//            })
-//         }
+        if(token){
+            api.get('/user').then(response =>{
+               const { name } = response.data[0]
+               console.log('name :>> ', name);
+               setUser(name)
+           })
+           .catch( () =>{
+               singOut();
+           })
+        }
 
-//    }, [])
+   }, [])
 
 
     async function singIn(user){
@@ -55,9 +56,6 @@ export default function AuthProvider({children}){
             const response = await api.post('/session', {
                 user
             })
-
-            setIsAuthenticated(true)
-            console.log('response :>> ', response.data, isAuthenticated);
             
             const { token, refresh_token } = response.data
 

@@ -9,6 +9,7 @@ export const AuthContext = createContext({});
 export function singOut(){
     destroyCookie(undefined, "nextauth.token")
     destroyCookie(undefined, "nextauth.refreshToken")
+    destroyCookie(undefined, "user.name")
 
     Router.push('/')
 }
@@ -38,8 +39,6 @@ export default function AuthProvider({children}){
         const {"nextauth.token": token } = parseCookies()  
 
         const {"user.name": name } = parseCookies()  
-
-        console.log('name :>> ', name);
 
         if(token){
            setUser(name)

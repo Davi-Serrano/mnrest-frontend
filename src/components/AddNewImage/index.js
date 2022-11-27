@@ -5,25 +5,25 @@ import { api } from "../../services/apiClient"
 export function AddNewImage({id, display, setDisplay={setDisplay}}){
     const [image, setImage] = useState("");
 
-
     async function handleAddNewImage(id, image){
         const data = new FormData();
         data.append("id", id);
         data.append("foods", image)
     
-
         await api.patch("/food/image", data).then( ()=> {})
         .catch(err =>
             console.log('resp :>> ', err.response)
         )
 
+        setDisplay("none")
+        alert("Foto alterada com sucesso")
     }
 
     return (
         <Flex  
             position="absolute"
             display={display}
-            h="100%"
+            h="40vh"
             color="black"
             bg="#7b7b7b"
             p="1em"

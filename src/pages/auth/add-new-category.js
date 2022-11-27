@@ -1,4 +1,4 @@
-import { FormLabel, Input, Flex, Button } from '@chakra-ui/react'
+import { FormLabel, Input, Flex, Button, Text } from '@chakra-ui/react'
 import { api } from "../../services/apiClient"
 import Head from 'next/head'
 import { useState } from 'react'
@@ -7,7 +7,7 @@ import { setupApiClient } from "../../services/api"
 
 
 
-export default function AddNewFood({categories}) {
+export default function AddNewCategory({categories}) {
   const [ name, setName] = useState('')
 
   async function handleSubmitCategory(){
@@ -36,6 +36,7 @@ export default function AddNewFood({categories}) {
       </Head>
 
       <Flex  
+        flexDir="column"
         align="center" 
         justify="center" 
         w="100vw"
@@ -43,6 +44,7 @@ export default function AddNewFood({categories}) {
         color="black"
         bg="#7b7b7b"
       >
+   
 
         <form >
           <FormLabel 

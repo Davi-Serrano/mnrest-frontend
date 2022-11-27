@@ -35,17 +35,14 @@ export default function AuthProvider({children}){
 
 
     useEffect(()=> {
-        const {"nextauth.token": token } = parseCookies()        
+        const {"nextauth.token": token } = parseCookies()  
+
+        const {"user.name": name } = parseCookies()  
+
+        console.log('name :>> ', name);
 
         if(token){
-            api.get('/user').then(response =>{
-               const { name } = response.data[0]
-               console.log('name :>> ', name);
-               setUser(name)
-           })
-           .catch( () =>{
-               singOut();
-           })
+           setUser(name)
         }
 
    }, [])
@@ -57,7 +54,7 @@ export default function AuthProvider({children}){
                 user
             })
             
-            const { token, refresh_token } = response.data
+            const { token, refresh_token, name } = response.data
 
             setCookie(undefined, 'nextauth.token', token,{
                 maxAge: 60 * 60 *24 * 30, // 30 days
@@ -69,8 +66,13 @@ export default function AuthProvider({children}){
                 path: '/'
             });
 
+            setCookie(undefined, 'user.name', name, {
+                maxAge: 60 * 60 *24 * 30, // 30 days
+                path: '/'
+            });
+
             setUser({
-                user,
+                name,
             })
 
             api.defaults.headers['Authorization'] = `Bearer ${token}` 

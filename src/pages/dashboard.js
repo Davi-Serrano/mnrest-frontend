@@ -3,14 +3,14 @@ import { Flex } from "@chakra-ui/react"
 import Head from 'next/head'
 import NextLink  from "next/link"
 import { AuthContext } from '../context/authContext'
-
+import  { withSSRGuest  } from "../utils/withSSRGuest"
+import { setupApiClient } from "../services/api"
 
 export default function Dashboard() {
   
     const { isAuthenticated, user } = useContext(AuthContext);
 
     console.log('isAuthenticated :>> ', isAuthenticated);
-    console.log('user :>> ', user);
 
     
     return (
@@ -63,4 +63,10 @@ export default function Dashboard() {
     )
   }
   
-  
+  export const getServerSideProps = withSSRGuest(async(ctx)=>{
+    const apiClient = setupApiClient(ctx)
+
+    return {
+        props:{}
+    }
+})

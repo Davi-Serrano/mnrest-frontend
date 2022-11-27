@@ -16,6 +16,8 @@ export function ColunmFoods({foods}){
             flexDir="column"
             justify="center"
             mt="1em"
+            w="95%"
+            maxW="400px"
         >
             {
             filtredFoods.map(food =>

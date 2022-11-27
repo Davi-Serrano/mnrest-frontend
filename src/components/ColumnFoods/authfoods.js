@@ -20,6 +20,7 @@ const { categories } = useCategories()
             flexDir="column"
             justify="center"
             mt="1em"
+            w="95%"
         >
             {
             filtredFoods.map(food =>

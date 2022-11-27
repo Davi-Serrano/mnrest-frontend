@@ -1,10 +1,6 @@
-import axios from "axios"
-import { parseCookies, setCookie } from "nookies";
-import { singOut } from "../context/authContext";
-import { AuthTokenError } from "./errors/AuthTokenErros";
+import { parseCookies } from "nookies";
+import axios from "axios";
 
-let isRefresh = false;
-let failedRequestQueue = [];
 
 export function setupApiClient(ctx){
     let cookies = parseCookies(ctx);

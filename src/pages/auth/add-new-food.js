@@ -1,8 +1,9 @@
 import { FormLabel, Input, Flex, Button, Select } from '@chakra-ui/react'
-import { api } from "../../services/apiClient"
 import Head from 'next/head'
 import { useState } from 'react'
 import {BtnCreateNewFood} from "../../components/ButtonCreateNewFood"
+import { withSSRGuest } from '../../utils/withSSRGuest'
+import { setupApiClient } from "../../services/api"
 
 
 
@@ -110,7 +111,8 @@ export default function AddNewFood({categories}) {
   )
 }
 
-export const getServerSideProps = async ()=>{
+export const getServerSideProps = withSSRGuest(async(ctx)=>{
+  const api = setupApiClient(ctx)
 
   const { data: categories} = await api.get("/category")
 
@@ -119,4 +121,4 @@ export const getServerSideProps = async ()=>{
       categories
     }
   }
-}
+})

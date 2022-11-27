@@ -1,12 +1,13 @@
+import { useEffect } from "react";
 import {useCategories } from "../../context/useCategory"
 
 import { Flex, Text } from "@chakra-ui/react";
 
-import {api} from "../../services/apiClient"
+import { withSSRGuest } from '../../utils/withSSRGuest'
+import { setupApiClient } from "../../services/api"
 
 import { RowCategory } from "../../components/RowCategory";
 import { ColunmFoodsAuth } from "../../components/ColumnFoods/authfoods";
-import { useEffect } from "react";
 
 
 
@@ -35,11 +36,11 @@ export default function Menu({categories, foods}){
     )
 }
 
-export const getServerSideProps = async ()=>{
+export const getServerSideProps = withSSRGuest(async(ctx)=>{
+    const api = setupApiClient(ctx)
 
     const { data: foods} = await api.get("/food")
     const { data: categories} = await api.get("/category")
-
 
     return{
       props:{
@@ -47,4 +48,4 @@ export const getServerSideProps = async ()=>{
         foods
       }
     }
-  }
+  })

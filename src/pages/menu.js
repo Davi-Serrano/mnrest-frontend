@@ -10,10 +10,9 @@ import { ColunmFoods } from "../components/ColumnFoods";
 
 
 export default function Menu({categories, foods}){
-    const { setCategories } = useCategories()
+    const { setCategories } = useCategories();
 
-    useEffect(()=> setCategories(categories[0].id), [])
-    
+    useEffect(()=> setCategories(categories[0].id), []);
     return(
         <Flex
             flexDir="column"
@@ -30,12 +29,12 @@ export default function Menu({categories, foods}){
         </Flex>
         </Flex>
     )
-}
+};
 
 export const getServerSideProps = async ()=>{
 
-    const { data: foods} = await api.get("/food")
-    const { data: categories} = await api.get("/category")
+    const { data: foods} = await api.get("/food");
+    const { data: categories} = await api.get("/category");
 
 
     return{
@@ -44,4 +43,4 @@ export const getServerSideProps = async ()=>{
         foods
       }
     }
-  }
+  };

@@ -9,17 +9,14 @@ import { setupApiClient } from "../../services/api"
 
 export default function DeleteCategory({categories}) {
 
-  console.log('api.headers :>> ', api);
-
   async function handleSubmitDeleteCategory(category_id){
-
-    alert(category_id)
-    const resp = await api.delete("/category", {
-        category_id
-     }).then( ()=> {})
+    const resp = await api.delete("/category", {data: {category_id}}).then( (res)=> console.log('deu certo :>>', res)
+    )
      .catch(err =>
          console.log('resp :>> ', err.response)
      )
+
+     console.log('resp :>> ', resp);
 
  }
 
@@ -77,9 +74,9 @@ export default function DeleteCategory({categories}) {
 }
 
 export const getServerSideProps = withSSRGuest(async(ctx)=>{
-  const apiClient= setupApiClient(ctx)
+  const api = setupApiClient(ctx)
 
-  const { data: categories} = await apiClient.get("/category")
+  const { data: categories} = await api.get("/category")
 
   return{
     props:{

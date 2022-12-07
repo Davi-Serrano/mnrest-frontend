@@ -10,7 +10,7 @@ export function Header() {
         <Flex
           justify="space-between"
           align="center"
-          minW="100vw"
+          minW="100%"
           px={["1em", "10em"]}
           py="1em"
           bg="#032233"

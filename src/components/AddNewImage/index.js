@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { FormLabel, Input, Flex, Button, Select } from '@chakra-ui/react'
 import { api } from "../../services/apiClient"
+import { formatDiagnostic } from 'typescript';
 
 export function AddNewImage({id, display, setDisplay={setDisplay}}){
     const [image, setImage] = useState("");
@@ -22,7 +23,7 @@ export function AddNewImage({id, display, setDisplay={setDisplay}}){
     return (
         <Flex  
             position="absolute"
-            display={display}
+            display={ display === id ? "block" : "none" }
             h="40vh"
             color="black"
             bg="#7b7b7b"
@@ -33,7 +34,7 @@ export function AddNewImage({id, display, setDisplay={setDisplay}}){
                 fontWeight="bold"
                 htmlFor="file"
                 >
-                Selecione uma imagem:
+                Selecione uma imagem: 
             </FormLabel>
             
                 <Input

@@ -4,7 +4,6 @@ import { useCategories } from "../../context/useCategory";
 import { Flex, Text, Image, Button } from "@chakra-ui/react";
 import { AddNewImage } from "../AddNewImage";
 
-
 export function ColunmFoodsAuth({foods}){
 const[ display, setDisplay ] = useState("none")
 
@@ -66,7 +65,7 @@ const { categories } = useCategories()
                                 opacity: .8,
                                 cursor: "pointer"
                                 }}
-                                onClick={()=> display == "none" ? setDisplay("block") : setDisplay("none") }
+                                onClick={()=> setDisplay(food.id)}
                             > 
                                 Alterar IMagem
                             </Button>

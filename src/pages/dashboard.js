@@ -58,6 +58,18 @@ export default function Dashboard() {
                     h="80px"
                     ml="1em"
                 >
+                    <NextLink href="/auth/delete-category" passHref> Deletar categoria </NextLink>  
+                </Flex>
+
+                <Flex
+                    justify="center"
+                    align="center"
+                    bg="#000" 
+                    color="#fff"
+                    width="200px"
+                    h="80px"
+                    ml="1em"
+                >
                     <NextLink href="/auth/edit-menu" passHref> Editar Menu </NextLink>  
                 </Flex>
 

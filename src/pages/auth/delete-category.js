@@ -4,13 +4,14 @@ import Head from 'next/head'
 import { useState } from 'react'
 import { withSSRGuest } from '../../utils/withSSRGuest'
 import { setupApiClient } from "../../services/api"
+import { returnToDashBoard } from '../../reuse'
 
 
 
 export default function DeleteCategory({categories}) {
 
   async function handleSubmitDeleteCategory(category_id){
-    const resp = await api.delete("/category", {data: {category_id}}).then( (res)=> console.log('deu certo :>>', res)
+    const resp = await api.delete("/category", {data: {category_id}}).then( (res)=> console.log('deu certo :>>', res), returnToDashBoard()
     )
      .catch(err =>
          console.log('resp :>> ', err.response)

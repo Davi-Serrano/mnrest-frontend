@@ -3,6 +3,7 @@ import { useCategories } from "../../context/useCategory";
 
 import { Flex, Text, Image, Button } from "@chakra-ui/react";
 import { AddNewImage } from "../AddNewImage";
+import { BtnDeleteFood } from "../ButtonDeleteFood"
 
 export function ColunmFoodsAuth({foods}){
 const[ display, setDisplay ] = useState("none")
@@ -83,18 +84,7 @@ const { categories } = useCategories()
                                 Editar Preço
                             </Button>
 
-                            <Button 
-                                bg="red" 
-                                color="#fff"
-                                mt="1em"
-                                ml="1em"
-                                _hover={{
-                                opacity: .8,
-                                cursor: "pointer"
-                                }}
-                            > 
-                                Excluir
-                            </Button>
+                            <BtnDeleteFood food_id={food.id}/>
                     </Flex>
 
                     <AddNewImage id={food.id} display={display} setDisplay={setDisplay} />

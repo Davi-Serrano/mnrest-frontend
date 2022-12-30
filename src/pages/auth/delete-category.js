@@ -11,7 +11,7 @@ import { returnToDashBoard } from '../../reuse'
 export default function DeleteCategory({categories}) {
 
   async function handleSubmitDeleteCategory(category_id){
-    const resp = await api.delete("/category", {data: {category_id}}).then( (res)=> console.log('deu certo :>>', res), returnToDashBoard()
+    const resp = await api.delete("/category", {data: {category_id}}).then( (res)=> console.log('Category deleted with success:>>', res), returnToDashBoard()
     )
      .catch(err =>
          console.log('resp :>> ', err.response)

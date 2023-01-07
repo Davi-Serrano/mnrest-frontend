@@ -4,9 +4,11 @@ import { useCategories } from "../../context/useCategory";
 import { Flex, Text, Image, Button } from "@chakra-ui/react";
 import { AddNewImage } from "../AddNewImage";
 import { BtnDeleteFood } from "../ButtonDeleteFood"
+import { EditPrice } from "../EditPrice";
 
 export function ColunmFoodsAuth({foods}){
-const[ display, setDisplay ] = useState("none")
+const[ displayImage, setDisplayImage ] = useState("none")
+const[ displayPrice, setDisplayPrice ] = useState("none")
 
 const { categories } = useCategories()
 
@@ -66,7 +68,7 @@ const { categories } = useCategories()
                                 opacity: .8,
                                 cursor: "pointer"
                                 }}
-                                onClick={()=> setDisplay(food.id)}
+                                onClick={()=> setDisplayImage(food.id)}
                             > 
                                 Alterar IMagem
                             </Button>
@@ -80,6 +82,7 @@ const { categories } = useCategories()
                                 opacity: .8,
                                 cursor: "pointer"
                                 }}
+                                onClick={()=> setDisplayPrice(food.id)}
                             > 
                                 Editar Preço
                             </Button>
@@ -87,7 +90,8 @@ const { categories } = useCategories()
                             <BtnDeleteFood food_id={food.id}/>
                     </Flex>
 
-                    <AddNewImage id={food.id} display={display} setDisplay={setDisplay} />
+                    <AddNewImage id={food.id} display={displayImage} setDisplay={setDisplayImage} />
+                    <EditPrice id={food.id} display={displayPrice} setDisplay={setDisplayPrice} />
                 </Flex>
                 )
             }

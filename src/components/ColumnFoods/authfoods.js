@@ -22,15 +22,14 @@ const { categories } = useCategories()
             flexDir="column"
             justify="center"
             mt="1em"
-            w="95%"
-            maxW="400px"
+            w="80%"
         >
             {
             filtredFoods.map(food =>
                 <Flex
                     flexWrap="wrap"
                     key={food.id}
-                    justify="start"
+                    justify="space-around"
                     mt="1em"
                     px="1em"
                     bg="#fff"

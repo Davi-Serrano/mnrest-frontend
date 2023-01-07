@@ -22,7 +22,8 @@ export function EditPrice({id, display, setDisplay={setDisplay}}){
             h="35vh"
             color="black"
             bg="whitesmoke"
-            p="1em"       
+            p="1em"   
+            zIndex={9}    
         >
             <form >
             <FormLabel 

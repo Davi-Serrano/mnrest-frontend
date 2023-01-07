@@ -28,6 +28,7 @@ export function AddNewImage({id, display, setDisplay={setDisplay}}){
             color="black"
             bg="whitesmoke"
             p="1em"
+            zIndex={9}
         >
             <form >
             <FormLabel 

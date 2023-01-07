@@ -1,4 +1,4 @@
-import { Flex, Button, Text } from '@chakra-ui/react'
+import { Flex, Button, Text, useToast } from '@chakra-ui/react'
 import { api } from "../../services/apiClient"
 import Head from 'next/head'
 import { useState } from 'react'
@@ -9,18 +9,30 @@ import { returnToDashBoard } from '../../reuse'
 
 
 export default function DeleteCategory({categories}) {
+  const toast = useToast()
 
   async function handleSubmitDeleteCategory(category_id){
-    const resp = await api.delete("/category", {data: {category_id}}).then( (res)=> console.log('Category deleted with success:>>', res), returnToDashBoard()
-    )
-     .catch(err =>
-         console.log('resp :>> ', err.response)
-     )
+    await api.delete("/category", {data: {category_id}}).then(()=> 
+              toast({
+                  title: "Categoria deletada com sucesso!",
+                  status: "success",
+                  position: "top",
+                  duration: 4000, // 2seconds
+                  isClosable: true,
+              }), 
 
-     console.log('resp :>> ', resp);
-
- }
-
+              setTimeout(returnToDashBoard(), 2000) // 2seconds
+              ).catch((err)=>
+                  toast({
+                      title: 'Erro ao exclui a categoria!',
+                      description: err.response.data.message,
+                      status: 'error',
+                      duration: 3000, //3 seconds
+                      isClosable: true,
+                      position: "top"
+                  })
+              )
+  }
 
   return (
     <Flex justify="center" mt="2em">

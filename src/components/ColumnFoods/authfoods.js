@@ -41,6 +41,7 @@ const { categories } = useCategories()
                     <Flex
                         flexDir="column"
                         ml="1em"
+                        w="40%"
                     >
                         <Text fontWeight="bold" fontSize="17px" >
                             {food.name}

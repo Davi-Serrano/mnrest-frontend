@@ -1,7 +1,16 @@
-import { Button } from "@chakra-ui/react";
+import { Button, useToast } from "@chakra-ui/react";
 import { api } from "../../services/apiClient";
+import { useRouter } from 'next/router'
+
+
+
+
 
 export function BtnCreateNewFood({name, price, category, description}){
+    const toast = useToast()
+    const router = useRouter()
+
+
 
     const handleSubmitFoods = async()=>{
        await api.post("/food", {
@@ -9,10 +18,31 @@ export function BtnCreateNewFood({name, price, category, description}){
             description,
             category_id: category,
             price
-        }).then( ()=> {})
+        }).then( ()=> {
+            toast({
+                title: 'Novo item adicionado com sucesso!',
+                status: 'success',
+                duration: 2000, // 2seconds
+                isClosable: true,
+                position: "top"
+            });
+
+           setTimeout(()=>router.reload(),  
+                2000 /* 2seconds */)
+        })
         .catch(err =>
-            console.log('resp :>> ', err.response)
+            toast({
+                title: 'Erro ao adicionar novo item!',
+                description: err.response.data.message,
+                status: 'error',
+                duration: 3000, //4 seconds
+                isClosable: true,
+                position: "top"
+            })
         )
+
+       
+
 
     }
 

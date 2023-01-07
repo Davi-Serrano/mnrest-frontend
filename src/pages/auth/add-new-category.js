@@ -1,4 +1,4 @@
-import { FormLabel, Input, Flex, Button, Text } from '@chakra-ui/react'
+import { FormLabel, Input, Flex, Button, useToast } from '@chakra-ui/react'
 import { api } from "../../services/apiClient"
 import Head from 'next/head'
 import { useState } from 'react'
@@ -9,22 +9,48 @@ import { setupApiClient } from "../../services/api"
 
 export default function AddNewCategory({categories}) {
   const [ name, setName] = useState('')
+  const toast = useToast()
 
   async function handleSubmitCategory(){
 
     const categoriesExisits = categories.find( categorie => categorie.name === name);
 
     if(categoriesExisits){
-        alert("Categoria já existe, cadastre com outro nome!")
+      toast({
+        title: 'Categoria já existe, escolha outro nome!',
+        status: 'warning',
+        duration: 2000, // 2seconds
+        isClosable: true,
+        position: "top"
+      });
+
         return
     }
 
-    const resp = await api.post("/category", {
+    await api.post("/category", {
          name,
-     }).then( ()=> {})
-     .catch(err =>
-         console.log('resp :>> ', err.response)
-     )
+     })
+     .then( ()=>
+          toast({
+            title: 'Categoria criada com sucesso!',
+            status: 'success',
+            duration: 2000, // 2seconds
+            isClosable: true,
+            position: "top"
+          }),
+
+          setTimeout(()=> location.reload(),  
+                          2000 /* 2seconds */)
+    ).catch(err =>
+      toast({
+          title: 'Erro ao deletar categoria!',
+          description: err.response.data.message,
+          status: 'error',
+          duration: 3000, //4 seconds
+          isClosable: true,
+          position: "top"
+      })
+  )
 
  }
 

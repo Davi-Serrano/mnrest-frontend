@@ -40,6 +40,10 @@ export const getServerSideProps = withSSRGuest(async(ctx)=>{
     const { data: foods} = await api.get("/food");
     const { data: categories} = await api.get("/category");
 
+    if(categories.length == 0){
+        categories.push("Nenhuma categoria adicionada no momento")
+    }
+
     return{
       props:{
         categories,

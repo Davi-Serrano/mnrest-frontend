@@ -26,7 +26,7 @@ export function AddNewImage({id, display, setDisplay={setDisplay}}){
             display={ display === id ? "block" : "none" }
             h="40vh"
             color="black"
-            bg="#7b7b7b"
+            bg="whitesmoke"
             p="1em"
         >
             <form >

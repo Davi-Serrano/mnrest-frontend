@@ -19,10 +19,10 @@ export function EditPrice({id, display, setDisplay={setDisplay}}){
         <Flex  
             position="absolute"
             display={ display === id ? "block" : "none" }
-            h="40vh"
+            h="35vh"
             color="black"
-            bg="#7b7b7b"
-            p="1em"
+            bg="whitesmoke"
+            p="1em"       
         >
             <form >
             <FormLabel 

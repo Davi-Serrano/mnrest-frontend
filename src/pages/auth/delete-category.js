@@ -38,9 +38,11 @@ export default function DeleteCategory({categories}) {
         {
           categories.map(categorie=> 
            <Flex
+           align="center"
+            bg="#E88B00"
             key={categorie.id}
             border="1px solid white "
-            borderRadius="5"
+            borderRadius="10"
             my="0.5em"
             px="1em"
            >

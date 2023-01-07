@@ -19,7 +19,7 @@ export function BtnCreateNewFood({name, price, category, description}){
     return(   
         <Button 
             id="btn"
-            bg="#000" 
+            bg="#0000cd" 
             color="#fff"
             width="80%"
             mt="1em"

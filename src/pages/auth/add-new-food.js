@@ -29,7 +29,6 @@ export default function AddNewFood({categories}) {
         w="100vw"
         h="100vh"
         color="black"
-        bg="#7b7b7b"
       >
 
         <form >

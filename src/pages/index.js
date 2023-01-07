@@ -42,7 +42,6 @@ export default function Home() {
         w="100vw"
         h="100vh"
         color="black"
-        bg="#7b7b7b"
       >
 
         <form  onSubmit={handleSubmit} >
@@ -79,7 +78,7 @@ export default function Home() {
             
             <Button
               type='submit' 
-              bg="#000" 
+              bg="#0000cd" 
               color="#fff"
               width="80%"
               mt="1em"

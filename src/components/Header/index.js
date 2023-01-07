@@ -13,7 +13,7 @@ export function Header() {
           minW="100%"
           px={["1em", "10em"]}
           py="1em"
-          bg="#032233"
+          bg="#0000cd"
         >
             <Text as="h1">Restaurante</Text>     
 

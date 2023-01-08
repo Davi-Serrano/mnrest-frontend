@@ -1,19 +1,8 @@
 import { useState } from 'react';
-import { FormLabel, Input, Flex, Button, Select } from '@chakra-ui/react'
-import { api } from "../../services/apiClient"
+import { FormLabel, Input, Flex, Button } from '@chakra-ui/react'
 
-export function EditPrice({id, display, setDisplay={setDisplay}}){
+export function EditPrice({id, display, setDisplay={setDisplay}, handleEditPrice}){
     const [price, setPrice] = useState("");
-
-    async function handleEditPrice(id, price){    
-        await api.patch("/food/price", {"id": id, "newPrice": price }).then( ()=> {})
-        .catch(err =>
-            console.log('resp :>> ', err.response)
-        )
-
-        setDisplay("none")
-        alert("Preço alterada com sucesso")
-    }
 
     return (
         <Flex  

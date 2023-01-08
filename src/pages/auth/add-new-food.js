@@ -1,19 +1,54 @@
-import { FormLabel, Input, Flex, Button, Select } from '@chakra-ui/react'
-import Head from 'next/head'
 import { useState } from 'react'
+import Head from 'next/head'
+
+import { FormLabel, Input, Flex, useToast, Select } from '@chakra-ui/react'
 import {BtnCreateNewFood} from "../../components/ButtonCreateNewFood"
+
 import { withSSRGuest } from '../../utils/withSSRGuest'
 import { setupApiClient } from "../../services/api"
 
-
-
-
+import { api } from "../../services/apiClient";
+import { useRouter } from 'next/router'
 
 export default function AddNewFood({categories}) {
   const [ name, setName] = useState('')
   const [ price, setPrice ] = useState('')
   const [ category, setCategory ] = useState('')
   const [ description, setDescription ] = useState('')
+
+  const toast = useToast()
+  const router = useRouter()
+
+  async function handleSubmitFoods(){
+    await api.post("/food", {
+         name,
+         description,
+         category_id: category,
+         price
+     }).then( ()=> {
+         toast({
+             title: 'Novo item adicionado com sucesso!',
+             status: 'success',
+             duration: 2000, // 2seconds
+             isClosable: true,
+             position: "top"
+         });
+
+        setTimeout(()=>router.reload(),  
+             2000 /* 2seconds */)
+     })
+     .catch(err =>
+         toast({
+             title: 'Erro ao adicionar novo item!',
+             description: err.response.data.message,
+             status: 'error',
+             duration: 3000, //4 seconds
+             isClosable: true,
+             position: "top"
+         })
+     )
+ }
+
 
   return (
     <Flex>
@@ -97,10 +132,7 @@ export default function AddNewFood({categories}) {
 
           
             <BtnCreateNewFood 
-              name={name}
-              price={price}
-              category={category}
-              description={description}
+              handleSubmitFoods={handleSubmitFoods}
             />
 
           </form>

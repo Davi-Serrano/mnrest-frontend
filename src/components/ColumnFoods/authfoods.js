@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { useCategories } from "../../context/useCategory";
 
-import { Flex, Text, Image, Button } from "@chakra-ui/react";
+import { Flex, Text, Image, Button, useToast } from "@chakra-ui/react";
+import { api } from "../../services/apiClient"
+
 import { AddNewImage } from "../AddNewImage";
 import { BtnDeleteFood } from "../ButtonDeleteFood"
 import { EditPrice } from "../EditPrice";
@@ -12,10 +14,36 @@ const[ displayPrice, setDisplayPrice ] = useState("none")
 
 const { categories } = useCategories()
 
+const toast = useToast()
+
     const filtredFoods = foods.filter(food =>
         food.category_id == categories
     ); 
 
+    async function handleEditPrice(id, price){    
+        await api.patch("/food/price", {"id": id, "newPrice": price })
+        .then(()=>
+            toast({
+            title: 'Preço alterado com sucesso!',
+            status: 'success',
+            duration: 2000, // 2seconds
+            isClosable: true,
+            position: "top"
+            }),
+
+            setTimeout(()=> location.reload(),  
+                2000)//2 seconds
+        ).catch(err =>
+            toast({
+                title: 'Erro ao editar preço!',
+                description: err.response.data.message,
+                status: 'error',
+                duration: 3000, //4 seconds
+                isClosable: true,
+                position: "top"
+            })
+        )
+    }
 
     return(
         <Flex
@@ -91,7 +119,7 @@ const { categories } = useCategories()
                     </Flex>
 
                     <AddNewImage id={food.id} display={displayImage} setDisplay={setDisplayImage} />
-                    <EditPrice id={food.id} display={displayPrice} setDisplay={setDisplayPrice} />
+                    <EditPrice id={food.id} display={displayPrice} setDisplay={setDisplayPrice} handleEditPrice={handleEditPrice} />
                 </Flex>
                 )
             }
